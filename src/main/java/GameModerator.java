@@ -1,7 +1,8 @@
 /**
  * Represents the game moderator of the SmartRochambeau application.
  * @author sarahpadlipsky
- * @version October 11, 2016
+ * @author cesiu
+ * @version October 12, 2016
  */
 
 import java.util.HashMap; 
@@ -21,10 +22,12 @@ public class GameModerator {
    private GameRound lastRound;
 
    public GameModerator() {
+      savedAIs = new HashMap<Class, GameAI>();
+      aiStates = new HashMap<Class, int[]>();
    }
 
    /**
-    * @param round The GameRound to run
+    * @param round The incomplete round to run
     */
    public void runRound(GameRound round) {
    }
@@ -32,8 +35,8 @@ public class GameModerator {
    /**
     * @param newAI The new AI to use
     */
-   public void setAI(GameAI newAI) {
-      currentAI = newAI;
+   public void setAI(Class newAI) {
+      currentAI = savedAIs.get(newAi);
    }
 
    /**
@@ -67,7 +70,7 @@ public class GameModerator {
       return 0;
    }
 
-   private class GameRound {
+   public class GameRound {
       // The throw made by the player
       public GameThrow playerThrow;
       // The throw made by the AI
