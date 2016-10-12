@@ -4,6 +4,8 @@
  * @version October 11, 2016
  */
 
+import java.util.HashMap; 
+
 public class GameModerator {
    // Enumeration of possible throws
    public enum GameThrow {
@@ -30,7 +32,7 @@ public class GameModerator {
    /**
     * @param newAI The new AI to use
     */
-   public void setAI(Class newAI) {
+   public void setAI(GameAI newAI) {
       currentAI = newAI;
    }
 
@@ -52,8 +54,8 @@ public class GameModerator {
     * @param throw The throw played by the player
     * @return The inverse for the incoming throw 
     */
-   public GameThrow getInverse(GameThrow throw) {
-      return new GameThrow();   
+   public GameThrow getInverse(GameThrow throw1) {
+      return GameThrow.ROCK;   
    }
 
    /**
