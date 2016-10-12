@@ -1,11 +1,12 @@
 /**
  * Represents the skeleton of the Game AI.
  * @author sarahpadlipsky
- * @version October 11, 2016
+ * @author cesiu
+ * @version October 12, 2016
  */
 
-public class GameAI {
-   
-   public GameAI(){
-   }
+public interface GameAI {
+   public GameModerator.GameThrow makeThrow();
+   public void storeResult(GameModerator.GameThrow playerThrow,
+                           boolean playerWon);
 }
