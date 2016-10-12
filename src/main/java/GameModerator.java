@@ -23,7 +23,7 @@ public class GameModerator {
 
    public GameModerator() {
       savedAIs = new HashMap<Class, GameAI>();
-      aiStates = new HashMap<Class, int[]>();
+      aiStats = new HashMap<Class, int[]>();
    }
 
    /**
@@ -36,7 +36,7 @@ public class GameModerator {
     * @param newAI The new AI to use
     */
    public void setAI(Class newAI) {
-      currentAI = savedAIs.get(newAi);
+      currentAI = savedAIs.get(newAI);
    }
 
    /**
