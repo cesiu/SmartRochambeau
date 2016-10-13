@@ -28,31 +28,31 @@ public class TestGameModerator
    public void testGetWinner() {
       GameModerator tempMod = new GameModerator();
 
-	   assertEquals("Testing winner of Rock and Rock...", 0,
+      assertEquals("Testing winner of Rock and Rock...", 0,
                     tempMod.getWinner(GameModerator.GameThrow.ROCK,
                     GameModerator.GameThrow.ROCK));
-	   assertEquals("Testing winner of Rock and Paper...", 1,
+      assertEquals("Testing winner of Rock and Paper...", 1,
                     tempMod.getWinner(GameModerator.GameThrow.ROCK,
                     GameModerator.GameThrow.PAPER));
-	   assertEquals("Testing winner of Rock and Scissors...", -1,
+      assertEquals("Testing winner of Rock and Scissors...", -1,
                     tempMod.getWinner(GameModerator.GameThrow.ROCK,
                     GameModerator.GameThrow.SCISSORS));
-	   assertEquals("Testing winner of Paper and Paper...", 0,
+      assertEquals("Testing winner of Paper and Paper...", 0,
                     tempMod.getWinner(GameModerator.GameThrow.PAPER,
                     GameModerator.GameThrow.PAPER));
-	   assertEquals("Testing winner of Paper and Scissors...", 1,
+      assertEquals("Testing winner of Paper and Scissors...", 1,
                     tempMod.getWinner(GameModerator.GameThrow.PAPER,
                     GameModerator.GameThrow.SCISSORS));
-	   assertEquals("Testing winner of Paper and Rock...", -1,
+      assertEquals("Testing winner of Paper and Rock...", -1,
                     tempMod.getWinner(GameModerator.GameThrow.PAPER,
                     GameModerator.GameThrow.ROCK));
-	   assertEquals("Testing winner of Scissors and Scissors...", 0,
+      assertEquals("Testing winner of Scissors and Scissors...", 0,
                     tempMod.getWinner(GameModerator.GameThrow.SCISSORS,
                     GameModerator.GameThrow.SCISSORS));
-	   assertEquals("Testing winner of Scissors and Rock...", 1,
+      assertEquals("Testing winner of Scissors and Rock...", 1,
                     tempMod.getWinner(GameModerator.GameThrow.SCISSORS,
                     GameModerator.GameThrow.ROCK));
-	   assertEquals("Testing winner of Scissors and Paper...", -1,
+      assertEquals("Testing winner of Scissors and Paper...", -1,
                     tempMod.getWinner(GameModerator.GameThrow.SCISSORS,
                     GameModerator.GameThrow.PAPER));
    }
