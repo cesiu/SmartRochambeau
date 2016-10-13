@@ -7,6 +7,5 @@
 
 public interface GameAI {
    public GameModerator.GameThrow makeThrow();
-   public void storeResult(GameModerator.GameThrow playerThrow,
-                           boolean playerWon);
+   public void storeResult(GameModerator.GameThrow playerThrow, int result);
 }
