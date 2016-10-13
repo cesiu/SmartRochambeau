@@ -8,10 +8,13 @@
 import java.util.HashMap; 
 
 public class GameModerator {
-   // Enumeration of possible throws
+   /*
+    * Represents possible throws.
+    */
    public enum GameThrow {
       ROCK, PAPER, SCISSORS
    }
+
    // The current AI being used
    private GameAI currentAI;
    // The AIs that have been saved
@@ -30,6 +33,9 @@ public class GameModerator {
     * @param round The incomplete round to run
     */
    public void runRound(GameRound round) {
+      round.aiThrow = currentAI.makeThrow();
+      round.result = getWinner(round.playerThrow, round.aiThrow);
+      lastRound = round;
    }
 
    /**
@@ -42,7 +48,7 @@ public class GameModerator {
    /**
     * @return The last round played
     */
-   public GameRound getLastRound() {
+    public GameRound getLastRound() {
       return lastRound;
    }
 
@@ -54,28 +60,37 @@ public class GameModerator {
    }
 
    /**
-    * @param throw The throw played by the player
-    * @return The inverse for the incoming throw 
+    * @param inThrow A valid throw
+    * @return The throw that would beat inThrow 
     */
-   public GameThrow getInverse(GameThrow throw1) {
-      return GameThrow.ROCK;   
+   public GameThrow getInverse(GameThrow inThrow) {
+      // Return the next throw in the enum declaration.
+      return GameThrow.values()[(inThrow.ordinal() + 1) % 2];
    }
 
    /**
     * @param throw1 The throw played by the first user
     * @param throw2 The throw played by the second user
-    * @return The winner of the round
+    * @return -1 if throw1 wins, 1 if throw2 wins, else 0
     */
    private int getWinner(GameThrow throw1, GameThrow throw2) {
-      return 0;
+      if (throw1.ordinal() == throw2.ordinal())
+         return 0;
+      else if ((throw1.ordinal() + 1) % 2 == throw2.ordinal())
+         return 1;
+      else
+         return -1;
    }
 
+   /**
+    * Collects information related to one round of the game.
+    */
    public class GameRound {
       // The throw made by the player
       public GameThrow playerThrow;
       // The throw made by the AI
       public GameThrow aiThrow;
-      // The player who won the round
-      public boolean playerWon;
+      // The outcome
+      public int result;
    }
 }
