@@ -65,7 +65,7 @@ public class GameModerator {
     */
    public GameThrow getInverse(GameThrow inThrow) {
       // Return the next throw in the enum declaration.
-      return GameThrow.values()[(inThrow.ordinal() + 1) % 2];
+      return GameThrow.values()[(inThrow.ordinal() + 1) % 3];
    }
 
    /**
@@ -73,10 +73,10 @@ public class GameModerator {
     * @param throw2 The throw played by the second user
     * @return -1 if throw1 wins, 1 if throw2 wins, else 0
     */
-   private int getWinner(GameThrow throw1, GameThrow throw2) {
+   public int getWinner(GameThrow throw1, GameThrow throw2) {
       if (throw1.ordinal() == throw2.ordinal())
          return 0;
-      else if ((throw1.ordinal() + 1) % 2 == throw2.ordinal())
+      else if ((throw1.ordinal() + 1) % 3 == throw2.ordinal())
          return 1;
       else
          return -1;
