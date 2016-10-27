@@ -30,6 +30,11 @@ public class ConsoleUI implements GameUI {
    * Instructs the UI to display the most recent results.
    */
   public void display() {
+    // TODO: Christopher Lee is fleshing this out as his weekly task; I just
+    //       need some prints to test other stuff.
+    lastRound = curController.getGame().getLastRound();
+    System.out.println("Computer player " + lastRound.aiThrow
+     + ", result was " + lastRound.result + "."); 
   }
 
   /**
