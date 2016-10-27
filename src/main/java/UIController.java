@@ -23,11 +23,12 @@ public class UIController {
   }
 
   /**
-   * Notifies the UI that it's time to run the next round.
-   * @param lastRound The previous round to display, null if inapplicable.
+   * Notifies the moderator that it's time to run the next round.
+   * @param playerThrow The player's throw for the round
    */
-  public void runRound(GameModerator.GameRound lastRound) {
-
+  public void runRound(GameModerator.GameThrow playerThrow) {
+    curGame.runRound(playerThrow);
+    curUI.display();
   }
 
   /**

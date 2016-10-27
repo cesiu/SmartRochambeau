@@ -14,6 +14,16 @@ public class ConsoleUI implements GameUI {
   public ConsoleUI(UIController curController) {
     this.curController = curController;
     in = new Scanner(System.in);
+    init();
+  }
+
+  /**
+   * Presents the initial options.
+   */
+  public void init() {
+    System.out.print("Select \"RandomAI\": ");
+    String temp = in.nextLine();
+    curController.getGame().setAI(RandomAI.class);
   }
 
   /**
@@ -34,7 +44,7 @@ public class ConsoleUI implements GameUI {
       tempInput = in.nextLine();
       switch (tempInput) {
         case "p":
-          curController.getGame().runRound(getThrow());
+          curController.runRound(getThrow());
           break;
         case "s":
           showStats();

@@ -28,6 +28,8 @@ public class GameModerator {
   public GameModerator() {
     savedAIs = new HashMap<Class, GameAI>();
     aiStats = new HashMap<Class, int[]>();
+
+    savedAIs.put(RandomAI.class, new RandomAI());
   }
 
   /**
