@@ -6,6 +6,7 @@
 
 public class SmartRochambeau {
   public static void main(String[] args) {
-
+    UIController curInterface = new UIController(false);
+    curInterface.setUI(new ConsoleUI(curInterface));
   }
 }

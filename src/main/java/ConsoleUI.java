@@ -1,4 +1,3 @@
-
 /**
  * Manages a command-line interface for a game of SmartRochambeau.
  * @author cesiu
@@ -23,7 +22,31 @@ public class ConsoleUI implements GameUI {
   public void display() {
   }
 
+  /**
+   * Runs the ConsoleUI indefinitely.
+   */
   public void run() {
+    boolean isRunning = true;
+    String tempInput = null;
+    
+    while (isRunning) {
+      System.out.print("Select \"[p]lay\", \"[s]tats\", or \"[q]uit\": ");
+      tempInput = in.nextLine();
+      switch (tempInput) {
+        case "p":
+          curController.getGame().runRound(getThrow());
+          break;
+        case "s":
+          showStats();
+          break;
+        case "q":
+          deconstruct();
+          isRunning = false;
+          break;
+        default:
+          break;
+      }
+    }
   }
 
   /**

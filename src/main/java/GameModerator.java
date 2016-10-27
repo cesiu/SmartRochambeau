@@ -32,11 +32,14 @@ public class GameModerator {
 
   /**
    * Takes the user's input, queries the AI, and runs the round. 
-   * @param round The incomplete round to run
+   * @param playerThrow The player's throw for the round
    */
-  public void runRound(GameRound round) {
+  public void runRound(GameThrow playerThrow) {
+    GameRound round = new GameRound(playerThrow);
     round.aiThrow = currentAI.makeThrow();
     round.result = getWinner(round.playerThrow, round.aiThrow);
+    // Don't set the lastRound until it's complete, because the GUI may be
+    //  accessing it.
     lastRound = round;
   }
 
@@ -100,5 +103,14 @@ public class GameModerator {
     public GameThrow aiThrow;
     // The outcome
     public int result;
+
+    /**
+     * Constructs a GameRound -- only the player's throw is known at time of
+     *  construction.
+     * @param playerThrow The player's throw for this round
+     */
+    public GameRound(GameThrow playerThrow) {
+      this.playerThrow = playerThrow;
+    }
   }
 }
