@@ -38,7 +38,7 @@ public class ConsoleUI implements GameUI {
     // TODO: Christopher Lee is fleshing this out as his weekly task; I just
     //       need some prints to test other stuff.
     lastRound = curController.getGame().getLastRound();
-    System.out.println("Computer player " + lastRound.aiThrow
+    System.out.println("Computer played " + lastRound.aiThrow
      + ", result was " + lastRound.result + "."); 
   }
 
