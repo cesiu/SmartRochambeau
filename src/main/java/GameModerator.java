@@ -30,6 +30,7 @@ public class GameModerator {
     aiStats = new HashMap<Class, int[]>();
 
     savedAIs.put(RandomAI.class, new RandomAI());
+    savedAIs.put(MarkovAI.class, new MarkovAI());
   }
 
   /**
@@ -43,6 +44,7 @@ public class GameModerator {
     // Don't set the lastRound until it's complete, because the GUI may be
     //  accessing it.
     lastRound = round;
+    currentAI.storeResult(round.playerThrow, round.result);
   }
 
   /**

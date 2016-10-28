@@ -21,9 +21,9 @@ public class ConsoleUI implements GameUI {
    * Presents the initial options.
    */
   public void init() {
-    System.out.print("Select \"RandomAI\": ");
+    System.out.print("Select \"MarkovAI\": ");
     String temp = in.nextLine();
-    curController.getGame().setAI(RandomAI.class);
+    curController.getGame().setAI(MarkovAI.class);
   }
 
   /**
