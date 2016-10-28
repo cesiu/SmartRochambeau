@@ -1,0 +1,24 @@
+Purpose:
+   Verifies that the console version of the game can use MarkovAI.
+
+Setup:
+   If the program has not been packaged, navigate to src/main/java and compile
+    the project with: javac *.java
+   Launch the program with: java SmartRochambeau
+
+Test Data:
+   1. Observe that the game asks you to select an AI.
+   2. Enter "m".
+   3. Observe that the game asks you to choose to play the next round, view
+      statistics, or quit.
+   4. Enter "p".
+   5. Observe that the game asks you to choose a throw.
+   6. Enter "Rock".
+   7. Observe that the game reports the computer's choice along with a number,
+      -1 if you won, 0 if you tied, and 1 if the computer won.
+   8. Verify that the number is correct.
+   9. Repeate Steps 6-8 several times.
+   10. Observe that as you continue to enter nothing but "Rock", the computer
+      begins to play nothing but "Paper".
+   11. Enter "q".
+   12. The program should terminate.
