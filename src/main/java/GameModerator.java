@@ -6,9 +6,10 @@
  * @version October 12, 2016
  */
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class GameModerator {
+public class GameModerator implements Serializable {
   /*
    * Represents possible throws.
    */
@@ -116,5 +117,88 @@ public class GameModerator {
     public GameRound(GameThrow playerThrow) {
       this.playerThrow = playerThrow;
     }
+
+    @Override
+    public int hashCode() {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + getOuterType().hashCode();
+      result = prime * result + ((aiThrow == null) ? 0 : aiThrow.hashCode());
+      result = prime * result + ((playerThrow == null) ? 0 : playerThrow.hashCode());
+      result = prime * result + this.result;
+      return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+      if (this == obj)
+        return true;
+      if (obj == null)
+        return false;
+      if (getClass() != obj.getClass())
+        return false;
+      GameRound other = (GameRound) obj;
+      if (!getOuterType().equals(other.getOuterType()))
+        return false;
+      if (aiThrow != other.aiThrow)
+        return false;
+      if (playerThrow != other.playerThrow)
+        return false;
+      if (result != other.result)
+        return false;
+      return true;
+    }
+
+    private GameModerator getOuterType() {
+      return GameModerator.this;
+    }
+    
+    
   }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((aiStats == null) ? 0 : aiStats.hashCode());
+    result = prime * result + ((currentAI == null) ? 0 : currentAI.hashCode());
+    result = prime * result + ((lastRound == null) ? 0 : lastRound.hashCode());
+    result = prime * result + ((savedAIs == null) ? 0 : savedAIs.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    GameModerator other = (GameModerator) obj;
+    if (aiStats == null) {
+      if (other.aiStats != null)
+        return false;
+    } else if (!aiStats.equals(other.aiStats))
+      return false;
+    if (currentAI == null) {
+      if (other.currentAI != null)
+        return false;
+    } else if (!currentAI.equals(other.currentAI))
+      return false;
+    if (lastRound == null) {
+      if (other.lastRound != null)
+        return false;
+    } else if (!lastRound.equals(other.lastRound))
+      return false;
+    if (savedAIs == null) {
+      if (other.savedAIs != null)
+        return false;
+    } else if (!savedAIs.equals(other.savedAIs))
+      return false;
+    return true;
+  }
+  
+  
+  
 }
