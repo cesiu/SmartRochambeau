@@ -5,9 +5,10 @@
  * @version October 12, 2016
  */
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class RandomAI implements GameAI {
+public class RandomAI implements GameAI, Serializable {
   // A random number generator for use making throws.
   private Random randGen;
 
@@ -33,4 +34,6 @@ public class RandomAI implements GameAI {
    */
   public void storeResult(GameModerator.GameThrow playerThrow, int result) {
   }
+ 
+  
 }

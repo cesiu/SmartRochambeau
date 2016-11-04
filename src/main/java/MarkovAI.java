@@ -5,10 +5,11 @@
  * @version October 18, 2016
  */
 
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Random;
 
-public class MarkovAI implements GameAI {
+public class MarkovAI implements GameAI, Serializable {
   // The current state of the game
   private GameState curState;
   // A random number generator
@@ -122,7 +123,7 @@ public class MarkovAI implements GameAI {
     curState = curState.nextStates.get(playerThrow)[result + 1];
   }
 
-  private class GameState {
+  private class GameState implements Serializable {
     // The throw represented by this state
     GameModerator.GameThrow curThrow;
     // The result represented by this state
