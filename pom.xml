@@ -22,4 +22,29 @@
   		<version>4.12</version>
   	</dependency>
   </dependencies>
+	<profiles>
+		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<sonar.host.url>
+					http://smartr.cs.hm.edu:9000
+				</sonar.host.url>
+
+			</properties>
+		</profile>
+	</profiles>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>3.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
