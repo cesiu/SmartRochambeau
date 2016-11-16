@@ -51,7 +51,7 @@ public class MarkovAI implements GameAI, Serializable {
     int numPapers = curState.nextFreqs.get(GameModerator.GameThrow.PAPER);
     int numScissors = curState.nextFreqs.get(GameModerator.GameThrow.SCISSORS);
 
-    System.out.println("\nThe current state is: (" + curState.curThrow + "," + curState.result + ")\n   numRocks: " + numRocks + "\n   numPapers: " + numPapers + "\n   numScissors: " + numScissors + "\n");
+    //System.out.println("\nThe current state is: (" + curState.curThrow + "," + curState.result + ")\n   numRocks: " + numRocks + "\n   numPapers: " + numPapers + "\n   numScissors: " + numScissors + "\n");
 
     if (numRocks > numPapers) {
       if (numRocks > numScissors) {
