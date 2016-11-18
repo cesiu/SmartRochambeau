@@ -17,6 +17,14 @@ public class TestMarkovAI {
                 markovAI.makeThrow() instanceof GameModerator.GameThrow);
   }
   
+  @Test
+  public void testToString() {
+    MarkovAI markovAI = new MarkovAI(); 
+    
+    assertTrue("Testing toString...", markovAI.toString() instanceof String);
+  }
+  
+  
   @Test 
   public void testStoreResult() {
      MarkovAI markovAI = new MarkovAI(); 
