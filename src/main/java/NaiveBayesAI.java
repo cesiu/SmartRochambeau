@@ -82,7 +82,7 @@ public class NaiveBayesAI implements GameAI, Serializable {
       else if (playerThrow == GameModerator.GameThrow.PAPER) {
         ++paperPriorThrows[tempThrow.ordinal()];
       }
-      else if (playerThrow == GameModerator.GameThrow.SCISSORS) {
+      else {
         ++scissorsPriorThrows[tempThrow.ordinal()];
       }
     }
