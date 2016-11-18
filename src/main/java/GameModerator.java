@@ -33,6 +33,7 @@ public class GameModerator implements Serializable {
     savedAIs.put(RandomAI.class, new RandomAI());
     savedAIs.put(MarkovAI.class, new MarkovAI());
     savedAIs.put(PatternMatchingAI.class, new PatternMatchingAI());
+    savedAIs.put(NaiveBayesAI.class, new NaiveBayesAI());
   }
 
   /**
