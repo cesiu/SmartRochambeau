@@ -41,8 +41,14 @@
 				<sonar.host.url>
 					http://smartr.cs.hm.edu:9000
 				</sonar.host.url>
-
 			</properties>
 		</profile>
-	</profiles>
+   </profiles>
+   <properties>
+      <sonar.exclusions>
+         src/main/java/ConsoleUI.java,
+         src/main/java/GameUI.java,
+         src/main/java/UIController.java,
+      </sonar.exclusions>
+   </properties>
 </project>
