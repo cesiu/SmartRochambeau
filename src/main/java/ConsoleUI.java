@@ -11,6 +11,8 @@ public class ConsoleUI implements GameUI {
   private UIController curController;
   private Scanner in;
 
+  private int delta;
+
   public ConsoleUI(UIController curController) {
     this.curController = curController;
     in = new Scanner(System.in);
@@ -46,6 +48,7 @@ public class ConsoleUI implements GameUI {
     lastRound = curController.getGame().getLastRound();
     System.out.println("Computer played " + lastRound.aiThrow
      + ", result was " + lastRound.result + ".\n"); 
+    delta += lastRound.result;
   }
 
   /**
@@ -84,14 +87,14 @@ public class ConsoleUI implements GameUI {
     String tempInput = null;
 
     do {
-      System.out.print("Select \"Rock\", \"Paper\", or \"Scissors\": ");
+      System.out.print("Select \"rock\", \"paper\", or \"scissors\": ");
       tempInput = in.nextLine();
       switch (tempInput) {
-        case "Rock":
+        case "rock":
           return GameModerator.GameThrow.ROCK;
-        case "Paper":
+        case "paper":
           return GameModerator.GameThrow.PAPER;
-        case "Scissors":
+        case "scissors":
           return GameModerator.GameThrow.SCISSORS;
         default:
           tempInput = null;
@@ -103,6 +106,7 @@ public class ConsoleUI implements GameUI {
   }
 
   private void showStats() {
+    System.out.println("The computer has won " + delta + " more times than you.");
   }
 
   private void deconstruct() {
