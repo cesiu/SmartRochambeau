@@ -190,13 +190,13 @@ public class PatternMatchingAI implements GameAI, Serializable {
    */
   private class GameNode implements Serializable {
     // The throw represented by this node
-    public GameModerator.GameThrow curThrow;
+    private GameModerator.GameThrow curThrow;
     // The next node when used in a linked list
-    public GameNode next;
+    private GameNode next;
 
     // The children of this node
-    public LinkedHashMap<GameModerator.GameThrow, GameNode> children;
+    private LinkedHashMap<GameModerator.GameThrow, GameNode> children;
     // The frequencies of the children
-    public LinkedHashMap<GameModerator.GameThrow, Integer> frequencies;
+    private LinkedHashMap<GameModerator.GameThrow, Integer> frequencies;
   }
 }

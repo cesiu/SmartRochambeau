@@ -125,14 +125,14 @@ public class MarkovAI implements GameAI, Serializable {
 
   private class GameState implements Serializable {
     // The throw represented by this state
-    GameModerator.GameThrow curThrow;
+    private GameModerator.GameThrow curThrow;
     // The result represented by this state
-    int result;
+    private int result;
     // References to the other states, where the array is indexed as:
     // 0: player win, 1: draw, 2: AI win
-    LinkedHashMap<GameModerator.GameThrow, GameState[]> nextStates;
+    private LinkedHashMap<GameModerator.GameThrow, GameState[]> nextStates;
     // Frequencies of the next states
-    LinkedHashMap<GameModerator.GameThrow, Integer> nextFreqs;
+    private LinkedHashMap<GameModerator.GameThrow, Integer> nextFreqs;
 
     private GameState(GameModerator.GameThrow curThrow, int result) {
       this.curThrow = curThrow;
