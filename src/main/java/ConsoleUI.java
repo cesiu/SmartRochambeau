@@ -21,10 +21,13 @@ public class ConsoleUI implements GameUI {
    * Presents the initial options.
    */
   public void init() {
-    System.out.print("Select \"[r]andom\" or \"[m]arkov\" AI: ");
+    System.out.print("Select \"[r]andom\", \"[m]arkov\", or \"[p]attern\" AI: ");
     String temp = in.nextLine();
     if (temp.equals("m")) {
       curController.getGame().setAI(MarkovAI.class);
+    }
+    else if (temp.equals("p")) {
+      curController.getGame().setAI(PatternMatchingAI.class);
     }
     else {
       curController.getGame().setAI(RandomAI.class);
@@ -39,7 +42,7 @@ public class ConsoleUI implements GameUI {
     //       need some prints to test other stuff.
     lastRound = curController.getGame().getLastRound();
     System.out.println("Computer played " + lastRound.aiThrow
-     + ", result was " + lastRound.result + "."); 
+     + ", result was " + lastRound.result + ".\n"); 
   }
 
   /**
