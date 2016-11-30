@@ -4,6 +4,8 @@ SmartRochambeau is a single player Rock-Paper-Scissors game featuring four
 different AI opponents, developed as an individual project for Professor
 Gudrun Socher's CPE 305 at Cal Poly, Fall 2016.
 
+Only SmartRochambeau.jar is required to run the game.
+
 SmartRochambeau can be run by double clicking on the JAR or from the command 
 line using java -jar SmartRochambeau.jar.
 
@@ -47,4 +49,16 @@ SmartRochambeau features four AI opponents:
   unique path from root to a leaf, and each leaf, as you might expect, contains
   frequencies for each of the three throws. The Pattern Matching AI, too, is
   capable of training as it runs..
-  
+
+These AI all share a common drawback: training as they go makes them easy to
+set up and play immediately, but it makes them vulnerable to overfitting. A
+player might make a slight change to his strategy, and the AI might take
+a long time to catch up.
+
+One possible solution is to count how many times the AI has used a throw for 
+training. After a certain threshold, whether that be related to number of throws
+trained on, win rate, or some combination thereof, the AI stops saving
+information after each round. After a certain amount of time or after the win
+rate drops below some other threshold, the AI can start training again, perhaps
+partially or completely "wiping the slate" and deleting some or all of its saved
+information.
