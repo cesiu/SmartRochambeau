@@ -33,14 +33,27 @@
         <section id="main_content">
           <p><a href="https://travis-ci.org/cpe305/fall2016-project-cesiu"><img src="https://travis-ci.org/cpe305/fall2016-project-cesiu.svg?branch=master" alt="Build Status"></a></p>
 
+<p><img src="https://github.com/cpe305/fall2016-project-cesiu/blob/master/diagrams/GameScreen.png?raw=true" alt="ui mock"></p>
+
 <p>SmartRochambeau is a single player Rock-Paper-Scissors game featuring four
 different AI opponents, developed as an individual project for Professor
 Gudrun Socher's CPE 305 at Cal Poly, Fall 2016.</p>
 
+<h2>
+<a id="installing" class="anchor" href="#installing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing</h2>
+
+<p>Only the cross-platform SmartRochambeau.jar is required to run the game.</p>
+
+<h2>
+<a id="running" class="anchor" href="#running" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running</h2>
+
 <p>SmartRochambeau can be run by double clicking on the JAR or from the command 
-line using java -jar SmartRochambeau.jar.</p>
+line using <code>java -jar SmartRochambeau.jar</code>.</p>
 
 <p>SmartRochambeau keeps track of win-loss-tie statistics and supports saved games.</p>
+
+<h2>
+<a id="opponents" class="anchor" href="#opponents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Opponents</h2>
 
 <p>SmartRochambeau features four AI opponents:</p>
 
@@ -83,6 +96,30 @@ unique path from root to a leaf, and each leaf, as you might expect, contains
 frequencies for each of the three throws. The Pattern Matching AI, too, is
 capable of training as it runs..</li>
 </ul>
+
+<p>These AI all share a common drawback: training as they go makes them easy to
+set up and play immediately, but it makes them vulnerable to overfitting. A
+player might make a slight change to his strategy, and the AI might take
+a long time to catch up.</p>
+
+<p>One possible solution is to count how many times the AI has used a throw for 
+training. After a certain threshold, whether that be related to number of throws
+trained on, win rate, or some combination thereof, the AI stops saving
+information after each round. After a certain amount of time or after the win
+rate drops below some other threshold, the AI can start training again, perhaps
+partially or completely "wiping the slate" and deleting some or all of its saved
+information.</p>
+
+<h2>
+<a id="architecture" class="anchor" href="#architecture" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Architecture</h2>
+
+<p><img src="https://github.com/cpe305/fall2016-project-cesiu/blob/master/diagrams/classDiagram.png?raw=true" alt="class diagram"></p>
+
+<p>SmartRochambeau uses a modified Model-View-Controller architecture pattern, with
+a controller class providing a generalized interface to the UI for the core
+logic and also giving the UI access to methods of the core logic. Both the UI
+and the AI implement interfaces designed to make adding new machine learning AI
+easy. </p>
         </section>
 
         <footer>
