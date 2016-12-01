@@ -6,13 +6,16 @@ SmartRochambeau is a single player Rock-Paper-Scissors game featuring four
 different AI opponents, developed as an individual project for Professor
 Gudrun Socher's CPE 305 at Cal Poly, Fall 2016.
 
-Only SmartRochambeau.jar is required to run the game.
+## Installing
+Only the cross-platform SmartRochambeau.jar is required to run the game.
 
+## Running
 SmartRochambeau can be run by double clicking on the JAR or from the command 
-line using java -jar SmartRochambeau.jar.
+line using `java -jar SmartRochambeau.jar`.
 
 SmartRochambeau keeps track of win-loss-tie statistics and supports saved games.
 
+## Opponents
 SmartRochambeau features four AI opponents:
 * A random AI as a control, which simply selects a random throw every round.
 * A Markov Chain AI modeled using nine states and three intermediate states, 
@@ -64,3 +67,13 @@ information after each round. After a certain amount of time or after the win
 rate drops below some other threshold, the AI can start training again, perhaps
 partially or completely "wiping the slate" and deleting some or all of its saved
 information.
+
+## Architecture
+
+![class diagram](https://github.com/cpe305/fall2016-project-cesiu/blob/master/diagrams/classDiagram.png?raw=true)
+
+SmartRochambeau uses a modified Model-View-Controller architecture pattern, with
+a controller class providing a generalized interface to the UI for the core
+logic and also giving the UI access to methods of the core logic. Both the UI
+and the AI implement interfaces designed to make adding new machine learning AI
+easy. 
