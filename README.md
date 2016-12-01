@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/cpe305/fall2016-project-cesiu.svg?branch=master)](https://travis-ci.org/cpe305/fall2016-project-cesiu)
 
+![ui mock](https://github.com/cpe305/fall2016-project-cesiu/blob/master/diagrams/GameScreen.png?raw=true)
+
 SmartRochambeau is a single player Rock-Paper-Scissors game featuring four
 different AI opponents, developed as an individual project for Professor
 Gudrun Socher's CPE 305 at Cal Poly, Fall 2016.
