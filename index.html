@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Fall2016-project-cesiu by cpe305</title>
+    <meta name="description" content="Fall2016-project-cesiu : fall2016-project-cesiu created by GitHub Classroom">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Fall2016-project-cesiu</title>
   </head>
 
   <body>
-    <div id="container">
-      <div class="inner">
 
-        <header>
-          <h1>Fall2016-project-cesiu</h1>
-          <h2>fall2016-project-cesiu created by GitHub Classroom</h2>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/cpe305/fall2016-project-cesiu">View on GitHub</a>
+
+          <h1 id="project_title">Fall2016-project-cesiu</h1>
+          <h2 id="project_tagline">fall2016-project-cesiu created by GitHub Classroom</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/cpe305/fall2016-project-cesiu/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/cpe305/fall2016-project-cesiu/tarball/master">Download this project as a tar.gz file</a>
+            </section>
         </header>
+    </div>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/cpe305/fall2016-project-cesiu/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/cpe305/fall2016-project-cesiu/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/cpe305/fall2016-project-cesiu" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <p><a href="https://travis-ci.org/cpe305/fall2016-project-cesiu"><img src="https://travis-ci.org/cpe305/fall2016-project-cesiu.svg?branch=master" alt="Build Status"></a></p>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="https://travis-ci.org/cpe305/fall2016-project-cesiu"><img src="https://travis-ci.org/cpe305/fall2016-project-cesiu.svg?branch=master" alt="Build Status"></a></p>
 
 <h1>
 <a id="smartrochambeau" class="anchor" href="#smartrochambeau" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SmartRochambeau</h1>
@@ -134,14 +134,14 @@ information.</p>
 <p>SmartRochambeau uses a modified Model-View-Controller architecture pattern, with
 a controller class providing a generalized interface to the UI for the core
 logic and also giving the UI access to methods of the core logic. Both the UI
-and the AI implement interfaces designed to make adding new machine learning AI
-easy.i</p>
+and the AI implement an interface or an abstract class  designed to make adding 
+new machine learning AI easy.</p>
 
 <p><img src="https://github.com/cpe305/fall2016-project-cesiu/blob/master/images/diagramMain.png?raw=true" alt="mainclasses"></p>
 
 <p>The core of SmartRochambeau is the GameModerator class, which handles all game
 logic, the UIController class, which provides generalized methods for the 
-GameModerator to notify user interfaces, the GameAI interface, which 
+GameModerator to notify user interfaces, the GameAI abstract class, which 
 standardizes the hooks required for a functioning AI, and the GameSerializer
 class, which saves and restores games.</p>
 
@@ -151,7 +151,8 @@ class, which saves and restores games.</p>
 simple as implementing the makeThrow method, which returns the AI's next choice
 of move (and typically calls the prediction logic), and the storeResult method,
 which returns the results of the last round to the AI so it can train itself
-as appropriate.</p>
+as appropriate. The GameAI class provides a utility method to analyze 
+frequencies of throws and generate the appropriate response, if the AI needs it.</p>
 
 <p><img src="https://github.com/cpe305/fall2016-project-cesiu/blob/master/images/diagramUI.png?raw=true" alt="uiclasses"></p>
 
@@ -215,15 +216,18 @@ on an individual project, and it worked well. It kept me accountable.</li>
 </ul>
 </li>
 </ul>
-        </section>
-
-        <footer>
-          Fall2016-project-cesiu is maintained by <a href="https://github.com/cpe305">cpe305</a><br>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
+      </section>
     </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Fall2016-project-cesiu maintained by <a href="https://github.com/cpe305">cpe305</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
   </body>
 </html>
