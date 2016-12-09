@@ -86,14 +86,14 @@ information.
 SmartRochambeau uses a modified Model-View-Controller architecture pattern, with
 a controller class providing a generalized interface to the UI for the core
 logic and also giving the UI access to methods of the core logic. Both the UI
-and the AI implement interfaces designed to make adding new machine learning AI
-easy.i
+and the AI implement an interface or an abstract class  designed to make adding 
+new machine learning AI easy.
 
 ![mainclasses] (https://github.com/cpe305/fall2016-project-cesiu/blob/master/images/diagramMain.png?raw=true)
 
 The core of SmartRochambeau is the GameModerator class, which handles all game
 logic, the UIController class, which provides generalized methods for the 
-GameModerator to notify user interfaces, the GameAI interface, which 
+GameModerator to notify user interfaces, the GameAI abstract class, which 
 standardizes the hooks required for a functioning AI, and the GameSerializer
 class, which saves and restores games.
 
@@ -103,7 +103,8 @@ Included are four AI classes, as elaborated upon above. Adding a new AI is as
 simple as implementing the makeThrow method, which returns the AI's next choice
 of move (and typically calls the prediction logic), and the storeResult method,
 which returns the results of the last round to the AI so it can train itself
-as appropriate.
+as appropriate. The GameAI class provides a utility method to analyze 
+frequencies of throws and generate the appropriate response, if the AI needs it.
 
 ![uiclasses] (https://github.com/cpe305/fall2016-project-cesiu/blob/master/images/diagramUI.png?raw=true)
 

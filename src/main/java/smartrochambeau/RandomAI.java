@@ -9,7 +9,7 @@ package smartrochambeau;
 import java.io.Serializable;
 import java.util.Random;
 
-public class RandomAI implements GameAI, Serializable {
+public class RandomAI extends GameAI implements Serializable {
   // A random number generator for use making throws.
   private Random randGen;
 

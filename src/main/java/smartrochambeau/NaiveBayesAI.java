@@ -10,7 +10,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.LinkedHashMap;
 import java.util.Random;
 
-public class NaiveBayesAI implements GameAI, Serializable {
+public class NaiveBayesAI extends GameAI implements Serializable {
   // The number of recent throws to keep.
   public static final int MAX_RECENT = 3;
   // The seen rock-prior throw frequencies.

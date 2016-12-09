@@ -8,13 +8,10 @@ package smartrochambeau;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
-import java.util.Random;
 
-public class MarkovAI implements GameAI, Serializable {
+public class MarkovAI extends GameAI implements Serializable {
   // The current state of the game
   private GameState curState;
-  // A random number generator
-  private Random randGen;
 
   /**
    * Constructs a MarkovAI with no training.
@@ -23,8 +20,6 @@ public class MarkovAI implements GameAI, Serializable {
     // Create the master hash map that contains all the states.
     LinkedHashMap<GameModerator.GameThrow, GameState[]> allStates 
      = new LinkedHashMap<>();
-    // Initialize the RNG.
-    randGen = new Random();
 
     // Create all the states and add them to the master map.
     for (GameModerator.GameThrow tempThrow : GameModerator.GameThrow.values()) {
@@ -53,63 +48,7 @@ public class MarkovAI implements GameAI, Serializable {
     int numPapers = curState.nextFreqs.get(GameModerator.GameThrow.PAPER);
     int numScissors = curState.nextFreqs.get(GameModerator.GameThrow.SCISSORS);
 
-    //System.out.println(this);
-
-    if (numRocks > numPapers) {
-      if (numRocks > numScissors) {
-        // More rocks than papers or scissors -- throw paper.
-        return GameModerator.GameThrow.PAPER;
-      }
-      else if (numRocks < numScissors) {
-        // More scissors than rocks or papers -- throw rock.
-        return GameModerator.GameThrow.ROCK;
-      }
-      else {
-        // Scissors and rocks tied for first.
-        if (randGen.nextInt(2) == 0) {
-          return GameModerator.GameThrow.PAPER;
-        }
-        else {
-          return GameModerator.GameThrow.ROCK;
-        }
-      }
-    }
-    else if (numRocks < numPapers) {
-      if (numPapers > numScissors) {
-        // More papers than rocks or scissors -- throw scissors.
-        return GameModerator.GameThrow.SCISSORS;
-      }
-      else if (numPapers < numScissors) {
-        // More scissors than rocks or papers -- throw rock.
-        return GameModerator.GameThrow.ROCK;
-      }
-      else {
-        // Scissors and papers tied for first.
-        if (randGen.nextInt(2) == 0) {
-          return GameModerator.GameThrow.SCISSORS;
-        }
-        else {
-          return GameModerator.GameThrow.ROCK;
-        }
-      }
-    }
-    else {
-      if (numScissors > numRocks) {
-        // Rocks and papers are tied. If there are more scissors, throw rock.
-        return GameModerator.GameThrow.ROCK;
-      }
-      else if (numScissors < numRocks) {
-        // Rocks and papers tied for first.
-        if (randGen.nextInt(2) == 0) {
-          return GameModerator.GameThrow.PAPER;
-        }
-        else {
-          return GameModerator.GameThrow.SCISSORS;
-        }
-      }
-      // All three tied.
-      return GameModerator.GameThrow.values()[randGen.nextInt(3)];
-    }
+    return GameAI.analyzeThrow(numRocks, numPapers, numScissors);
   }
 
   /**
