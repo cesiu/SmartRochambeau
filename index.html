@@ -33,7 +33,10 @@
         <section id="main_content">
           <p><a href="https://travis-ci.org/cpe305/fall2016-project-cesiu"><img src="https://travis-ci.org/cpe305/fall2016-project-cesiu.svg?branch=master" alt="Build Status"></a></p>
 
-<p><img src="https://github.com/cpe305/fall2016-project-cesiu/blob/master/diagrams/GameScreen.png?raw=true" alt="ui mock"></p>
+<h1>
+<a id="smartrochambeau" class="anchor" href="#smartrochambeau" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SmartRochambeau</h1>
+
+<p><img src="https://raw.githubusercontent.com/cpe305/fall2016-project-cesiu/master/images/Screen%20Shot%202016-12-08%20at%207.20.10%20PM.png" alt="startmenu"></p>
 
 <p>SmartRochambeau is a single player Rock-Paper-Scissors game featuring four
 different AI opponents, developed as an individual project for Professor
@@ -42,15 +45,23 @@ Gudrun Socher's CPE 305 at Cal Poly, Fall 2016.</p>
 <h2>
 <a id="installing" class="anchor" href="#installing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing</h2>
 
-<p>Only the cross-platform SmartRochambeau.jar is required to run the game.</p>
+<p>The cross-platform JAR (<code>SmartRochambeau.jar</code>) is required to run the game. A
+<code>game-data.ser</code> file is generated upon saving, and can be copied to a new 
+environment if you wish to preserve old results.</p>
 
 <h2>
 <a id="running" class="anchor" href="#running" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running</h2>
 
 <p>SmartRochambeau can be run by double clicking on the JAR or from the command 
-line using <code>java -jar SmartRochambeau.jar</code>.</p>
+line using <code>java -jar SmartRochambeau.jar</code>. The command line mode can be 
+reached by adding the <code>-c</code> flag.
+<img src="https://raw.githubusercontent.com/cpe305/fall2016-project-cesiu/master/images/Screen%20Shot%202016-12-08%20at%207.21.31%20PM.png" alt="mainscreen"></p>
 
-<p>SmartRochambeau keeps track of win-loss-tie statistics and supports saved games.</p>
+<p>In addition to providing AI opponents against which to play Rock-Paper-Scissors,
+SmartRochambeau keeps statistics on the performance of each opponent and can
+save its state when the player quits, allowing the machine learning algorithms
+to pick up where they left off when a new session begins and allowing the 
+algorithms to be compared.</p>
 
 <h2>
 <a id="opponents" class="anchor" href="#opponents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Opponents</h2>
@@ -58,8 +69,8 @@ line using <code>java -jar SmartRochambeau.jar</code>.</p>
 <p>SmartRochambeau features four AI opponents:</p>
 
 <ul>
-<li>A random AI as a control, which simply selects a random throw every round.</li>
-<li>A Markov Chain AI modeled using nine states and three intermediate states, 
+<li>A <strong>random AI</strong> as a control, which simply selects a random throw every round.</li>
+<li>A <strong>Markov Chain AI</strong> modeled using nine states and three intermediate states, 
 which answers the question, "Considering what the player threw last and 
 whether or not he won, what is he likely to throw next?". At any given time, 
 the current state is determined by the player's last throw and the result of 
@@ -72,7 +83,7 @@ threw Rock, Paper, and Scissors. Based on those numbers, the AI can predict
 the player's most likely next move. The AI trains as it runs, updating the 
 frequencies once it knows the outcome of the current round before it moves to
 the next state.</li>
-<li>A Naive Bayes AI -- implemented mostly as an experiment, not because I thought
+<li>A <strong>Naive Bayes AI</strong> -- implemented mostly as an experiment, not because I thought
 it was necessarily a good algorithm for this problem -- that attempts to
 answer the question, "Considering the player's last few throws, what is he
 leading up to throwing?". The idea being, a Markov-Chain-based is vulnerable
@@ -87,7 +98,7 @@ historically, Rock and Paper have indivdually led up to Rock, Paper, or
 Scissors, then combine those probabilities using Bayes Rule. Like the Markov
 Chain AI, the Naive Bayes AI is capable of training as it goes, though this
 makes it vulnerable to overfitting and thus long term shifts in strategy.</li>
-<li>A Pattern Matching AI, which I personally predicted would do best of the 
+<li>A <strong>Pattern Matching AI</strong>, which I personally predicted would do best of the 
 three, that attempts to answer the same question as the Naive Bayes AI, but
 based on the pattern of the individual throws, not their general overall
 frequencies. The AI maintains a complete ternary tree of throws to allow
@@ -96,6 +107,11 @@ unique path from root to a leaf, and each leaf, as you might expect, contains
 frequencies for each of the three throws. The Pattern Matching AI, too, is
 capable of training as it runs..</li>
 </ul>
+
+<p><img src="https://raw.githubusercontent.com/cpe305/fall2016-project-cesiu/master/images/Screen%20Shot%202016-12-08%20at%207.22.54%20PM.png" alt="consoleview"></p>
+
+<h2>
+<a id="limitations" class="anchor" href="#limitations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Limitations</h2>
 
 <p>These AI all share a common drawback: training as they go makes them easy to
 set up and play immediately, but it makes them vulnerable to overfitting. A
@@ -119,7 +135,86 @@ information.</p>
 a controller class providing a generalized interface to the UI for the core
 logic and also giving the UI access to methods of the core logic. Both the UI
 and the AI implement interfaces designed to make adding new machine learning AI
-easy. </p>
+easy.i</p>
+
+<p><img src="https://github.com/cpe305/fall2016-project-cesiu/blob/master/images/diagramMain.png?raw=true" alt="mainclasses"></p>
+
+<p>The core of SmartRochambeau is the GameModerator class, which handles all game
+logic, the UIController class, which provides generalized methods for the 
+GameModerator to notify user interfaces, the GameAI interface, which 
+standardizes the hooks required for a functioning AI, and the GameSerializer
+class, which saves and restores games.</p>
+
+<p><img src="https://github.com/cpe305/fall2016-project-cesiu/blob/master/images/diagramAI.png?raw=true" alt="aiclasses"></p>
+
+<p>Included are four AI classes, as elaborated upon above. Adding a new AI is as
+simple as implementing the makeThrow method, which returns the AI's next choice
+of move (and typically calls the prediction logic), and the storeResult method,
+which returns the results of the last round to the AI so it can train itself
+as appropriate.</p>
+
+<p><img src="https://github.com/cpe305/fall2016-project-cesiu/blob/master/images/diagramUI.png?raw=true" alt="uiclasses"></p>
+
+<p>On the UI end, both a controller and an interface are used: the interface
+requires only that a UI have some method to display results. The UIController
+then provides a number of methods to send or receive data to or from the 
+GameModerator, which a UI may or may not need to call.</p>
+
+<h2>
+<a id="design-patterns" class="anchor" href="#design-patterns" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Design Patterns</h2>
+
+<ul>
+<li>The <strong>Observer</strong> pattern is combined with the MVC architecture pattern to 
+allow multiple types of user interfaces -- which may or may not be running on
+the same thread as the moderator -- to update their displays. Note, however,
+that a pure Observer patter is not used; the subject is instantiated with
+one observer, and no observers can be registered or unregistered. It is
+expected that a single player game will require one UI, and that won't change
+throughout a session.</li>
+<li>The <strong>Strategy</strong> pattern allows multiple AI to be easily implemented and
+swapped. Adding new AI strategies is made much easier. (Though making the UI
+changes to choose that new AI...still not so easy.)</li>
+<li>The <strong>State</strong> pattern is used, for obvious reasons, by the Markov Chain AI,
+since, well, Markov Chains represent transitions of states.</li>
+<li>The <strong>Composite</strong> pattern, similarly, is used by the Pattern Matching AI to
+represent its tree of patterns.</li>
+</ul>
+
+<h2>
+<a id="academic-takeaways" class="anchor" href="#academic-takeaways" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Academic Takeaways</h2>
+
+<ul>
+<li>Things I liked best:
+
+<ul>
+<li>First and foremost, I greatly enjoyed the opportunity to choose and propose
+my own project and its goals for this class. I know that it's not really 
+an industry-accurate scenario, but I had a lot more fun working on this
+project than on my 308/309 (Software Engineering I, II) project and my
+ongoing 402/405/406 (capstone) project.
+
+<ul>
+<li>On that note, that meant that I could decide on the process I liked best;
+I could start with Waterfall and move to Agile whenever I wanted to.
+(Even if I deviated from the schedule as the quarter got busier...)</li>
+</ul>
+</li>
+<li>Playtesting SmartRochambeau with my roommates appears to confirm my initial
+hypotheses that Pattern Matching would do well and Naive Bayes, less so.
+Always nice when that happens.</li>
+<li>JavaFX is tedious and verbose, but it's amazing compared to Swing. It's
+like eating steak with a paring knife instead of with a butter knife.</li>
+</ul>
+</li>
+<li>Key learnings:
+
+<ul>
+<li>I had an idea of how software process worked, and I'd done it in team
+settings, but this was the first time I'd gotten a chance to use it
+on an individual project, and it worked well. It kept me accountable.</li>
+</ul>
+</li>
+</ul>
         </section>
 
         <footer>
