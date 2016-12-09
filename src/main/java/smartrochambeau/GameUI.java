@@ -1,3 +1,4 @@
+package smartrochambeau;
 /**
  * Defines a common interface for UI classes.
  * 

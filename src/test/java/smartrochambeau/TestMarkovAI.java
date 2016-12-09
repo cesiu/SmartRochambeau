@@ -1,3 +1,4 @@
+package smartrochambeau;
 /**
  * Contains unit tests for MarkovAI.
  * @author cesiu
@@ -7,6 +8,9 @@
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import smartrochambeau.GameModerator;
+import smartrochambeau.MarkovAI;
 
 public class TestMarkovAI {
   @Test 

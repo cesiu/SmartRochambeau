@@ -1,3 +1,4 @@
+package smartrochambeau;
 /**
  * Represents the skeleton of the Game AI.
  * @author sarahpadlipsky

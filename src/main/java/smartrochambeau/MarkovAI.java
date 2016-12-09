@@ -1,3 +1,4 @@
+package smartrochambeau;
 
 /*
  * A Rochambeau AI that makes throws based on Markov Chains.

@@ -1,3 +1,4 @@
+package smartrochambeau;
 /**
  * Contains unit tests for RandomAI.
  * @author cbrown83
@@ -7,6 +8,10 @@
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import smartrochambeau.GameAI;
+import smartrochambeau.GameModerator;
+import smartrochambeau.RandomAI;
 
 public class TestRandomAI
 {   

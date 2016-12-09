@@ -1,3 +1,4 @@
+package smartrochambeau;
 /**
  * Contains unit tests for PatternMatchingAI.
  * @author cesiu
@@ -6,6 +7,9 @@
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import smartrochambeau.GameModerator;
+import smartrochambeau.PatternMatchingAI;
 
 public class TestPatternMatchingAI {
   @Test 

@@ -1,3 +1,4 @@
+package smartrochambeau;
 /**
  * Controls the Java FX GUI.
  * @author cesiu

@@ -1,3 +1,4 @@
+package smartrochambeau;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
@@ -5,6 +6,10 @@ import java.io.IOException;
 
 import org.junit.After;
 import org.junit.Test;
+
+import smartrochambeau.GameModerator;
+import smartrochambeau.GameSerializer;
+
 import static org.junit.Assert.*;
 
 

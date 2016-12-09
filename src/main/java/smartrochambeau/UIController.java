@@ -1,3 +1,4 @@
+package smartrochambeau;
 /**
  * Controls interactions between interfaces and game moderators.
  * 

@@ -1,3 +1,4 @@
+package smartrochambeau;
 /**
  * Contains a main method to start and run a game of SmartRochambeau.
  * 

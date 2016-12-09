@@ -1,3 +1,4 @@
+package smartrochambeau;
 /**
  * Manages a command-line interface for a game of SmartRochambeau.
  * @author cesiu
