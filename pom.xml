@@ -46,12 +46,12 @@
    </profiles>
    <properties>
       <sonar.exclusions>
-         src/main/java/ConsoleUI.java,
-         src/main/java/GameUI.java,
-         src/main/java/UIController.java,
-         src/main/java/JavaFXGui.java,
-         src/main/java/SmartRochambeau.java,
-	     src/main/java/GameSerializer.java,
+         src/main/java/smartrochambeau/ConsoleUI.java,
+         src/main/java/smartrochambeau/GameUI.java,
+         src/main/java/smartrochambeau/UIController.java,
+         src/main/java/smartrochambeau/JavaFXGui.java,
+         src/main/java/smartrochambeau/SmartRochambeau.java,
+         src/main/java/smartrochambeau/GameSerializer.java,
       </sonar.exclusions>
    </properties>
 </project>
