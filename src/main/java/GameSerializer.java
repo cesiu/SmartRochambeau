@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
  * SmartRochambeau.
  * 
  * @author cesiu
+ * @author dpolansky
  * @version October 12, 2016
  */
 

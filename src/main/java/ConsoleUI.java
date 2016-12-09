@@ -76,6 +76,7 @@ public class ConsoleUI implements GameUI {
           break;
       }
     }
+    System.exit(0);
   }
 
   /**

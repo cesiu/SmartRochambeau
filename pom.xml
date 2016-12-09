@@ -49,6 +49,9 @@
          src/main/java/ConsoleUI.java,
          src/main/java/GameUI.java,
          src/main/java/UIController.java,
+         src/main/java/JavaFXGui.java,
+         src/main/java/SmartRochambeau.java,
+	     src/main/java/GameSerializer.java,
       </sonar.exclusions>
    </properties>
 </project>

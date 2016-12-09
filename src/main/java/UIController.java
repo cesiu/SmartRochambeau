@@ -48,8 +48,21 @@ public class UIController {
   }
 
   public void saveGame() {
+    try {
+      GameSerializer.saveGame(curGame);
+    }
+    catch (Exception e) {}
   }
 
   public void restoreGame() {
+    try {
+      curGame = GameSerializer.restoreGame();
+    }
+    catch (Exception e) {
+      System.out.println("Begin stack trace.");
+      e.printStackTrace();
+      System.out.println("End stack trace.");
+      curGame = new GameModerator();
+    }
   }
 }

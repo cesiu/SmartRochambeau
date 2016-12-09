@@ -34,6 +34,11 @@ public class GameModerator implements Serializable {
     savedAIs.put(MarkovAI.class, new MarkovAI());
     savedAIs.put(PatternMatchingAI.class, new PatternMatchingAI());
     savedAIs.put(NaiveBayesAI.class, new NaiveBayesAI());
+    
+    aiStats.put(RandomAI.class, new int[]{0,0,0});
+    aiStats.put(MarkovAI.class, new int[]{0,0,0});
+    aiStats.put(PatternMatchingAI.class, new int[]{0,0,0});
+    aiStats.put(NaiveBayesAI.class, new int[]{0,0,0});
   }
 
   /**
@@ -48,6 +53,19 @@ public class GameModerator implements Serializable {
     //  accessing it.
     lastRound = round;
     currentAI.storeResult(round.playerThrow, round.result);
+    
+    int idx = 0;
+    switch (lastRound.result) {
+      case -1:
+        idx = 1;
+        break;
+      case 1:
+        idx = 0;
+        break;
+      default:
+        idx = 2;
+    }
+    aiStats.get(currentAI.getClass())[idx]++;
   }
 
   /**
@@ -103,7 +121,7 @@ public class GameModerator implements Serializable {
   /**
    * Collects information related to one round of the game.
    */
-  public class GameRound {
+  public class GameRound implements Serializable {
     // The throw made by the player
     public GameThrow playerThrow;
     // The throw made by the AI
@@ -154,8 +172,6 @@ public class GameModerator implements Serializable {
     private GameModerator getOuterType() {
       return GameModerator.this;
     }
-    
-    
   }
 
   @Override
@@ -200,7 +216,4 @@ public class GameModerator implements Serializable {
       return false;
     return true;
   }
-  
-  
-  
 }
