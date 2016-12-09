@@ -2,18 +2,22 @@
 
 # SmartRochambeau
 ![startmenu](https://raw.githubusercontent.com/cpe305/fall2016-project-cesiu/master/images/Screen%20Shot%202016-12-08%20at%207.20.10%20PM.png)
+
 SmartRochambeau is a single player Rock-Paper-Scissors game featuring four
 different AI opponents, developed as an individual project for Professor
 Gudrun Socher's CPE 305 at Cal Poly, Fall 2016.
 
 ## Installing
-The cross-platform JAR (`SmartRochambeau.jar`) is required to run the game. 
+The cross-platform JAR (`SmartRochambeau.jar`) is required to run the game. A
+`game-data.ser` file is generated upon saving, and can be copied to a new 
+environment if you wish to preserve old results.
 
 ## Running
 SmartRochambeau can be run by double clicking on the JAR or from the command 
 line using `java -jar SmartRochambeau.jar`. The command line mode can be 
 reached by adding the `-c` flag.
 ![mainscreen](https://raw.githubusercontent.com/cpe305/fall2016-project-cesiu/master/images/Screen%20Shot%202016-12-08%20at%207.21.31%20PM.png)
+
 In addition to providing AI opponents against which to play Rock-Paper-Scissors,
 SmartRochambeau keeps statistics on the performance of each opponent and can
 save its state when the player quits, allowing the machine learning algorithms
@@ -78,24 +82,31 @@ information.
 
 ## Architecture
 ![class diagram](https://github.com/cpe305/fall2016-project-cesiu/blob/master/diagrams/classDiagram.png?raw=true)
+
 SmartRochambeau uses a modified Model-View-Controller architecture pattern, with
 a controller class providing a generalized interface to the UI for the core
 logic and also giving the UI access to methods of the core logic. Both the UI
 and the AI implement interfaces designed to make adding new machine learning AI
-easy.
+easy.i
+
 ![mainclasses] (https://github.com/cpe305/fall2016-project-cesiu/blob/master/images/diagramMain.png?raw=true)
+
 The core of SmartRochambeau is the GameModerator class, which handles all game
 logic, the UIController class, which provides generalized methods for the 
 GameModerator to notify user interfaces, the GameAI interface, which 
 standardizes the hooks required for a functioning AI, and the GameSerializer
 class, which saves and restores games.
+
 ![aiclasses] (https://github.com/cpe305/fall2016-project-cesiu/blob/master/images/diagramAI.png?raw=true)
+
 Included are four AI classes, as elaborated upon above. Adding a new AI is as
 simple as implementing the makeThrow method, which returns the AI's next choice
 of move (and typically calls the prediction logic), and the storeResult method,
 which returns the results of the last round to the AI so it can train itself
 as appropriate.
+
 ![uiclasses] (https://github.com/cpe305/fall2016-project-cesiu/blob/master/images/diagramUI.png?raw=true)
+
 On the UI end, both a controller and an interface are used: the interface
 requires only that a UI have some method to display results. The UIController
 then provides a number of methods to send or receive data to or from the 
