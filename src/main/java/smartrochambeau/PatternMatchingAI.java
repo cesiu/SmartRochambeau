@@ -42,6 +42,7 @@ public class PatternMatchingAI implements GameAI, Serializable {
    * 
    * @return A valid GameThrow
    */
+  @Override
   public GameModerator.GameThrow makeThrow() {
     GameNode curLeaf = searchTree(queueHead);
 
@@ -112,6 +113,7 @@ public class PatternMatchingAI implements GameAI, Serializable {
    * @param playerThrow What the player threw last round
    * @param result The result of the last round
    */
+  @Override
   public void storeResult(GameModerator.GameThrow playerThrow, int result) {
     GameNode oldLeaf = searchTree(queueHead);
 
@@ -122,8 +124,6 @@ public class PatternMatchingAI implements GameAI, Serializable {
     queueTail.next.curThrow = playerThrow;
     queueTail = queueTail.next;
     queueHead = queueHead.next;
-
-    //System.out.println(this);
   }
 
   /**
@@ -131,6 +131,7 @@ public class PatternMatchingAI implements GameAI, Serializable {
    *
    * @return The string.
    */
+  @Override
   public String toString() {
     GameNode curLeaf = searchTree(queueHead);
 
@@ -175,8 +176,8 @@ public class PatternMatchingAI implements GameAI, Serializable {
       return null;
 
     GameNode tempNode = new GameNode();
-    tempNode.children = new LinkedHashMap<GameModerator.GameThrow, GameNode>();
-    tempNode.frequencies = new LinkedHashMap<GameModerator.GameThrow, Integer>();
+    tempNode.children = new LinkedHashMap<>();
+    tempNode.frequencies = new LinkedHashMap<>();
 
     for (GameModerator.GameThrow tempThrow : GameModerator.GameThrow.values()) {
       tempNode.frequencies.put(tempThrow, 0);

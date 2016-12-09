@@ -47,6 +47,7 @@ public class MarkovAI implements GameAI, Serializable {
    * 
    * @return A valid GameThrow
    */
+  @Override
   public GameModerator.GameThrow makeThrow() {
     int numRocks = curState.nextFreqs.get(GameModerator.GameThrow.ROCK);
     int numPapers = curState.nextFreqs.get(GameModerator.GameThrow.PAPER);
@@ -119,6 +120,7 @@ public class MarkovAI implements GameAI, Serializable {
    * @param result
    *          The result of the last round
    */
+  @Override
   public void storeResult(GameModerator.GameThrow playerThrow, int result) {
     curState.nextFreqs.put(playerThrow, curState.nextFreqs.get(playerThrow) + 1);
     curState = curState.nextStates.get(playerThrow)[result + 1];
@@ -129,10 +131,14 @@ public class MarkovAI implements GameAI, Serializable {
    *
    * @return The string.
    */
+  @Override
   public String toString() {
     return curState.toString();
   }
 
+  /**
+   * Represents one state in a Markov Chain.
+   */
   private class GameState implements Serializable {
     // The throw represented by this state
     private GameModerator.GameThrow curThrow;
@@ -144,16 +150,27 @@ public class MarkovAI implements GameAI, Serializable {
     // Frequencies of the next states
     private LinkedHashMap<GameModerator.GameThrow, Integer> nextFreqs;
 
+    /**
+     * Creates a game state.
+     * @param curThrow The throw represented by this state
+     * @param result The result represented by this state.
+     */
     private GameState(GameModerator.GameThrow curThrow, int result) {
       this.curThrow = curThrow;
       this.result = result;
 
-      nextFreqs = new LinkedHashMap<GameModerator.GameThrow, Integer>();
+      nextFreqs = new LinkedHashMap<>();
       nextFreqs.put(GameModerator.GameThrow.ROCK, 0);
       nextFreqs.put(GameModerator.GameThrow.PAPER, 0);
       nextFreqs.put(GameModerator.GameThrow.SCISSORS, 0);
     }
 
+    /**
+     * Stringifies the state.
+     * 
+     * @return The string
+     */
+    @Override
     public String toString() {
       return "This state represents a " + curThrow + ": " + result + "\n   "
              + "Frequencies are:\n   Rock: " + nextFreqs.get(GameModerator

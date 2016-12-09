@@ -27,9 +27,12 @@ public class GameModerator implements Serializable {
   // The information for the last round
   private GameRound lastRound;
 
+  /**
+   * Creates a new game moderator and initializes the AI.
+   */
   public GameModerator() {
-    savedAIs = new HashMap<Class, GameAI>();
-    aiStats = new HashMap<Class, int[]>();
+    savedAIs = new HashMap<>();
+    aiStats = new HashMap<>();
 
     savedAIs.put(RandomAI.class, new RandomAI());
     savedAIs.put(MarkovAI.class, new MarkovAI());
@@ -55,7 +58,7 @@ public class GameModerator implements Serializable {
     lastRound = round;
     currentAI.storeResult(round.playerThrow, round.result);
     
-    int idx = 0;
+    int idx;
     switch (lastRound.result) {
       case -1:
         idx = 1;
@@ -139,16 +142,26 @@ public class GameModerator implements Serializable {
       this.playerThrow = playerThrow;
     }
 
+    /**
+     * Hashes the GameRound.
+     * 
+     * @return The hash code
+     */
     @Override
     public int hashCode() {
       final int prime = 31;
-      int result = 1;
-      result = prime * result + ((aiThrow == null) ? 0 : aiThrow.hashCode());
-      result = prime * result + ((playerThrow == null) ? 0 : playerThrow.hashCode());
-      result = prime * result + this.result;
-      return result;
+      int retResult = 1;
+      retResult = prime * retResult + ((aiThrow == null) ? 0 : aiThrow.hashCode());
+      retResult = prime * retResult + ((playerThrow == null) ? 0 : playerThrow.hashCode());
+      retResult = prime * retResult + this.result;
+      return retResult;
     }
 
+    /**
+     * Compares the round to another object.
+     * 
+     * @return Whether or not the other object is equal
+     */
     @Override
     public boolean equals(Object obj) {
       if (this == obj)
@@ -169,11 +182,21 @@ public class GameModerator implements Serializable {
       return true;
     }
 
+    /**
+     * Gets the parent type.
+     * 
+     * @return The parent type
+     */
     private GameModerator getOuterType() {
       return GameModerator.this;
     }
   }
 
+  /**
+   * Hashes the moderator.
+   * 
+   * @return The hash code
+   */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -185,6 +208,11 @@ public class GameModerator implements Serializable {
     return result;
   }
 
+  /**
+   * Compares the moderator to another object.
+   * 
+   * @return Whether or not the other object is equal
+   */
   @Override
   public boolean equals(Object obj) {
     if (this == obj)

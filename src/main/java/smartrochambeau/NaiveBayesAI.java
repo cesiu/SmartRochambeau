@@ -31,7 +31,7 @@ public class NaiveBayesAI implements GameAI, Serializable {
     rockPriorThrows = new int[] {0, 0, 0}; 
     paperPriorThrows = new int[] {0, 0, 0}; 
     scissorsPriorThrows = new int[] {0, 0, 0}; 
-    recentThrows = new ArrayBlockingQueue<GameModerator.GameThrow>(MAX_RECENT);
+    recentThrows = new ArrayBlockingQueue<>(MAX_RECENT);
     randGen = new Random();
   }
 
@@ -40,10 +40,9 @@ public class NaiveBayesAI implements GameAI, Serializable {
    * 
    * @return A valid GameThrow
    */
+  @Override
   public GameModerator.GameThrow makeThrow() {
     int numRocks = 1, numPapers = 1, numScissors = 1;
-
-    //System.out.println(this);
 
     // For each of the recent throws, check how often that throw has lead to
     //  each throw.
@@ -74,6 +73,7 @@ public class NaiveBayesAI implements GameAI, Serializable {
    * @param playerThrow What the player threw last round
    * @param result The result of the last round
    */
+  @Override
   public void storeResult(GameModerator.GameThrow playerThrow, int result) {
     // For each recent throw, update the frequencies.
     for (GameModerator.GameThrow tempThrow : recentThrows) {
@@ -100,6 +100,7 @@ public class NaiveBayesAI implements GameAI, Serializable {
    *
    * @return The string
    */
+  @Override
   public String toString() {
     String retStr = "In the past, throws leading to rock:\n   "
                     + rockPriorThrows[0] + "," + rockPriorThrows[1] + ","
