@@ -49,6 +49,7 @@ public class SmartRochambeau extends Application {
       
       Scene scene = new Scene(root,700,500);
       primaryStage.setScene(scene);
+      primaryStage.setResizable(false);
       primaryStage.show();
       
       ((JavaFXGui)curUI).statSetup();

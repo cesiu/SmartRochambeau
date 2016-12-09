@@ -22,7 +22,6 @@ public class TestGameSerializer {
   }
 
   @Test
-  // change this to test equality when you implement the equals method for a GameModerator
   public void testSaveRestoreGame() throws IOException, ClassNotFoundException {
     GameSerializer.saveGame(new GameModerator());
     GameModerator actual = GameSerializer.restoreGame();
